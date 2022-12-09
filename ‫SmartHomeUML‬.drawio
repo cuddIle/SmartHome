@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-09T17:46:37.856Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="7FRbS9rKZEoBXpG_0gUY" version="20.6.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-12-09T17:47:03.447Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="1zhdCLFAmRv2hsS4SEjZ" version="20.6.1" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2125" dy="1930" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -85,7 +85,7 @@
         <mxCell id="hVdAlqfwy3-rb3Vmg-3X-15" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="hVdAlqfwy3-rb3Vmg-3X-13">
           <mxGeometry y="52" width="310" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="hVdAlqfwy3-rb3Vmg-3X-16" value="+ add_device(client_id: Str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hVdAlqfwy3-rb3Vmg-3X-13">
+        <mxCell id="hVdAlqfwy3-rb3Vmg-3X-16" value="+ add_device(client_id: Str, client: Client)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hVdAlqfwy3-rb3Vmg-3X-13">
           <mxGeometry y="60" width="310" height="26" as="geometry" />
         </mxCell>
         <mxCell id="hVdAlqfwy3-rb3Vmg-3X-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=0;endSize=10;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hVdAlqfwy3-rb3Vmg-3X-14" target="HT5hTXt2VZVf2EEvOPUg-9">
