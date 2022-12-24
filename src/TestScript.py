@@ -1,25 +1,20 @@
-import requests as req
-from pymongo import MongoClient
+import socket
+import ipaddress
+from unittest import mock
+from mock import MagicMock
 
+from rsaSocket import RsaSocket
+with mock.patch('socket.socket') as mock_socket:
+    mock_socket.return_value.recv.return_value = "aaa"
+    mock_socket.return_value.send.return_value = "bbb"
+    soc1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    soc1.connect(("", 12345))
+    soc1.connect.assert_called_with(("", 12345))
 
-# r = req.get(url='http://127.0.0.1:5000', data="aaa")
-
-# print(r.text)
-
-MONGODB_ATLAS_URI = "mongodb+srv://smarthome.aqnjrxz.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
-MONGODB_CERT_PATH = "Resources/X509-cert-2696376426828117784.pem"
-
-mongodb_client = MongoClient(
-                            MONGODB_ATLAS_URI,
-                            tls=True,
-                            tlsCertificateKeyFile=MONGODB_CERT_PATH
-                            )
-
-db = mongodb_client['SmartHome']
-collection = db["Users"]
-mydict = {"name": "shay", "password": "1234"}
-a = collection.find_one(mydict)
-print(a["_id"])
+    print(soc1.recv())
+    a = soc1.send("ccc")
+    print(a)
+    print("done")
 
 
 

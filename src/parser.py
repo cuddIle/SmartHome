@@ -6,5 +6,5 @@ class Parser:
         pass
 
     def pars_request(self, request: str):
-
+        
         pass

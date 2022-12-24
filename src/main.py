@@ -1,5 +1,5 @@
-from Server import Server
-from dataclasses import dataclass
+from server import Server
+
 
 s = Server()
 s.run()
