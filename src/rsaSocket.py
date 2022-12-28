@@ -1,13 +1,14 @@
 import logging
 import socket
 
+from customSocket import CustomSocket
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import serialization, hashes
 
 
-class RsaSocket:
+class RsaSocket(CustomSocket):
 
-    def __init__(self, key_size: int = 2048, public_exponent: int = 65537):
+    def __init__(self, client_socket, key_size: int = 2048, public_exponent: int = 65537):
 
         self.client_socket = None
 
@@ -16,6 +17,9 @@ class RsaSocket:
             public_exponent=public_exponent,
             key_size=key_size,
         )
+
+        self.client_socket = client_socket
+        self._start_rsa_hand_shake()
 
     def _start_rsa_hand_shake(self):
         logging.debug("start rsa handshake")
@@ -29,17 +33,7 @@ class RsaSocket:
         pem_format_client_public_key = self.client_socket.recv()
         self.client_public_key = serialization.load_pem_private_key(pem_format_client_public_key, password=None)
 
-    def bind(self, client_info: tuple[str, int]):
-        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.client_socket.connect(client_info)
-
-        self._start_rsa_hand_shake()
-
-    def bind_socket(self, client_socket: socket.socket):
-        self.client_socket = client_socket
-        self._start_rsa_hand_shake()
-
-    def send(self, msg: str):
+    def send(self, msg: str) -> None:
         encrypted_msg = self.public_key.encrypt(
             msg,
             padding.OAEP(
@@ -51,7 +45,7 @@ class RsaSocket:
 
         self.client_socket.send(encrypted_msg)
 
-    def recv(self):
+    def recv(self) -> bytes:
         encoded_msg = self.client_socket.recv()
 
         msg = self.private_key.decrypt(
@@ -62,3 +56,5 @@ class RsaSocket:
                 label=None
             )
         )
+
+        return msg

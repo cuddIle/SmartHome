@@ -1,13 +1,15 @@
 import socket
 import logging
 import threading
+from rsaSocket import RsaSocket
+from aesSocket import AesSocket
 from concurrent.futures import ThreadPoolExecutor
-
+from customSocket import CustomSocket
+from contestants import RequestsType, EncryptionType
+from requests import SigninRequest, SignupRequest, ConnectUserRequest, ConnectDeviceRequest, Request
 from clientsManager import ClientsManager
 from authManager import AuthManager
-from database import Database
 from parser import Parser
-
 
 
 class Server:
@@ -32,21 +34,24 @@ class Server:
 
         threading.Thread(target=self.listen_for_new_connections)
 
-    def handle_new_connection(self, new_socket: socket.socket):
-        # TODO: make socket encrypted with rsa
-        request_str = new_socket.recv()
+    def _create_encrypted_socket(self, plane_socket: socket.socket, encryption_type: EncryptionType) -> CustomSocket:
+        if encryption_type == EncryptionType.AES:
+            return AesSocket(plane_socket)
 
-        request = self.parser.pars_request(request_str)
-
-        # TODO: pars the request
-        # TODO: send the respond of the auth manager throw the encrypted socket
-
-        pass
+        elif encryption_type == EncryptionType.RSA:
+            return RsaSocket(plane_socket)
 
     def listen_for_new_connections(self):
         while True:
             client_socket, address = self.server_socket.accept()
-            self.thread_pool.submit(self.handle_new_connection(), client_socket)
+            self.thread_pool.submit(self.handle_new_connection(), client_socket, EncryptionType.RSA)
+
+    def handle_new_request(self, client_socket: socket.socket, encryption_type: EncryptionType) -> None:
+        # creating secure socket
+        # client_socket = self._create_encrypted_socket(new_socket, encryption_type)
+
+        request_str = client_socket.recv().decode()
+        request = self.parser.pars_request(request_str)
 
 
 
