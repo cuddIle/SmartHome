@@ -2,7 +2,7 @@ import json
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import Enum, auto
-from contestants import RequestsType
+from src.structs.contestants import RequestsType
 
 
 @dataclass

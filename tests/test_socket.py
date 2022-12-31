@@ -1,4 +1,4 @@
-from src.rsaSocket import RsaSocket
+from src.sockets.rsaSocket import RsaSocket
 import pytest
 import mock
 

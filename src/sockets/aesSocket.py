@@ -1,5 +1,4 @@
-from customSocket import CustomSocket
-
+from src.sockets.customSocket import CustomSocket
 
 class AesSocket(CustomSocket):
     def __init__(self):

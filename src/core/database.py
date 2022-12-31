@@ -5,7 +5,7 @@ import logging
 class Database:
 
     MONGODB_ATLAS_URI = "mongodb+srv://smarthome.aqnjrxz.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
-    MONGODB_CERT_PATH = "Resources/X509-cert-2696376426828117784.pem"
+    MONGODB_CERT_PATH = "../Resources/X509-cert-2696376426828117784.pem"
 
     MIN_PASSWORD_LENGTH = 3
     MAX_PASSWORD_LENGTH = 50

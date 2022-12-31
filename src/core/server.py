@@ -1,15 +1,15 @@
 import socket
 import logging
 import threading
-from rsaSocket import RsaSocket
-from aesSocket import AesSocket
+from src.sockets.rsaSocket import RsaSocket
+from src.sockets.aesSocket import AesSocket
 from concurrent.futures import ThreadPoolExecutor
-from customSocket import CustomSocket
-from contestants import RequestsType, EncryptionType
-from requests import SigninRequest, SignupRequest, ConnectUserRequest, ConnectDeviceRequest, Request
-from clientsManager import ClientsManager
-from authManager import AuthManager
-from parser import Parser
+from src.sockets.customSocket import CustomSocket
+from src.structs.contestants import RequestsType, EncryptionType
+from src.structs.requests import SigninRequest, SignupRequest, ConnectUserRequest, ConnectDeviceRequest, Request
+from src.core.clientsManager import ClientsManager
+from src.core.authManager import AuthManager
+from src.core.parser import Parser
 
 
 class Server:
@@ -31,7 +31,6 @@ class Server:
 
     def run(self):
         logging.debug("running server")
-
         threading.Thread(target=self.listen_for_new_connections)
 
     def _create_encrypted_socket(self, plane_socket: socket.socket, encryption_type: EncryptionType) -> CustomSocket:

@@ -9,4 +9,4 @@ class CustomSocket(ABC):
 
     @abstractmethod
     def recv(self) -> bytes:
-        pass
+        return

@@ -1,7 +1,7 @@
-from mypy.typeshed.stdlib.builtins import staticmethod
 
-from requests import SigninRequest, SignupRequest, ConnectUserRequest, ConnectDeviceRequest, Request
-from contestants import RequestsType
+
+from src.structs.requests import SigninRequest, SignupRequest, ConnectUserRequest, ConnectDeviceRequest, Request
+from src.structs.contestants import RequestsType
 import json
 
 
