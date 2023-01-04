@@ -4,11 +4,9 @@ import sys
 
 from src.sockets.customSocket import CustomSocket
 
-import crypto
-sys.modules['Crypto'] = crypto
-from crypto.PublicKey import RSA
-from crypto import Random
-from crypto.Cipher import PKCS1_OAEP
+from Crypto.PublicKey import RSA
+from Crypto import Random
+from Crypto.Cipher import PKCS1_OAEP
 
 
 class RsaSocket(CustomSocket):
